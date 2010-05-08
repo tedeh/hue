@@ -8,16 +8,14 @@
  * Created by Tedde Lundgren
  * 
  */
-package src
+package library.hue
 {
   import flash.events.EventDispatcher;
   import flash.utils.ByteArray;
   
-  import fl.motion.DynamicMatrix;
-  
-  import src.HueEvent;    
+  import fl.motion.DynamicMatrix; 
 
-  public final class Hue extends EventDispatcher
+  public class Hue extends EventDispatcher
   {
     // Options
     public var options:HueOptions;

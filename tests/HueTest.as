@@ -2,7 +2,7 @@ package tests
 {
   import asunit.framework.TestCase;
 	
-	import src.*;
+	import library.hue.*;
 
 	public class HueTest extends TestCase 
 	{

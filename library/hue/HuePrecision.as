@@ -8,7 +8,7 @@
  * Created by Tedde Lundgren
  * 
  */
-package src
+package library.hue
 {
   public final class HuePrecision 
   {

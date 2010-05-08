@@ -8,7 +8,7 @@
  * Created by Tedde Lundgren
  * 
  */
-package src
+package library.hue
 {
   import flash.display.GradientType;
   import flash.display.Graphics;

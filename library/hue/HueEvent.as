@@ -1,4 +1,4 @@
-﻿/*
+/*
  * HueEvent
  * Events dispatched by Hue
  * 
@@ -8,11 +8,11 @@
  * Created by Tedde Lundgren
  * 
  */
-package src
+package library.hue
 {
   import flash.events.Event;  
 
-  public final class HueEvent extends Event 
+  public class HueEvent extends Event 
   {
     // Signals that the color of Hue has changed
     public static const CHANGE:String = 'change';

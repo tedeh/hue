@@ -8,9 +8,9 @@
  * Created by Tedde Lundgren
  * 
  */
-package src
+package library.hue
 {
-  public final class HueComponent 
+  public class HueComponent 
   {
     public static var HSL:String = 'hsl';
     public static var HSL_HUE:String = 'hslHue';
