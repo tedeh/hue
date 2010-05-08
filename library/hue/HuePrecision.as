@@ -31,7 +31,7 @@ package library.hue
   		{
   			default:
   			case BPP8:
-  			  return 'Real (256)';
+  			  return '256';
   			case BPP5:
   			  return '32';
   			case BPP4:
