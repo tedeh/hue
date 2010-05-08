@@ -1,0 +1,11 @@
+﻿package tests {
+	import asunit.textui.TestRunner;
+	
+	public class AsUnitTestRunner extends TestRunner {
+
+		public function AsUnitTestRunner() {
+			//start(ScaleTests, null, TestRunner.SHOW_TRACE);
+      start(HueTests, null, TestRunner.SHOW_TRACE);
+		}
+	}
+}
