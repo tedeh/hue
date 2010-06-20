@@ -4,8 +4,6 @@
 package library.hue
 {
     import flash.events.EventDispatcher;
-    import flash.utils.ByteArray;
-
     import fl.motion.DynamicMatrix; 
 
     public class Hue extends EventDispatcher
@@ -177,19 +175,10 @@ package library.hue
             return {};
         }
     
-        // Copies passed object
-        public static function copyObject(o:Object):Object
-        {
-            var buffer:ByteArray = new ByteArray;
-            buffer.writeObject(o);
-            buffer.position = 0;
-            return buffer.readObject();
-        }
-    
         // Returns a copy of the specified group object
         public function getGroupCopy(group:String):Object
         {
-            return copyObject(getGroup(group));
+            return HueTools.copyObject(getGroup(group));
         }
     
         // Sets a group, and notifies the change

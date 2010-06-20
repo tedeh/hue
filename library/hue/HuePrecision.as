@@ -49,9 +49,9 @@ package library.hue
         // Changes the precision of value
         public static function change(precision:uint, value:Number, min:Number = 0, max:Number = 1):Number
         {
-            var tv:Number = HueScale.change(value, min, max, 0, precision - 1);
+            var tv:Number = HueTools.reScale(value, min, max, 0, precision - 1);
             tv = Math.round(tv);
-            return HueScale.change(tv, 0, precision - 1, min, max);
+            return HueTools.reScale(tv, 0, precision - 1, min, max);
         }
 
         // Truncates values higher than max or lower than min to max and min respectively

@@ -132,7 +132,7 @@ package library.hue
         {
             var fromRange:Object = getRangeForScale(component, REAL);
             var toRange:Object = getRangeForScale(component, scale);
-            var a:Number = change(value, fromRange.min, fromRange.max, toRange.min, toRange.max);
+            var a:Number = HueTools.reScale(value, fromRange.min, fromRange.max, toRange.min, toRange.max);
             return scaleIsInteger(scale) ? Math.round(a) : a;
         }
 
@@ -141,15 +141,9 @@ package library.hue
         {
             var fromRange:Object = getRangeForScale(component, scale);
             var toRange:Object = getRangeForScale(component, REAL);
-            var a:Number = change(value, fromRange.min, fromRange.max, toRange.min, toRange.max);
+            var a:Number = HueTools.reScale(value, fromRange.min, fromRange.max, toRange.min, toRange.max);
             a = HuePrecision.truncateValue(a, toRange.min, toRange.max);
             return a;
-        }
-
-        // Linearly changes the value x, which is in the a1 and b1 interval, to be in the a2 and b2 interval
-        public static function change(x:Number, a1:Number, b1:Number, a2:Number = 0, b2:Number = 1):Number
-        {
-            return (x * (a2 - b2) + a1 * b2 - a2 * b1) / (a1 - b1);
         }
     }
 }

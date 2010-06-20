@@ -33,7 +33,7 @@ package tests
             for(i = 0; i < ITERATIONS; i++)
             {
                 lab = {l: 0, a: 0, b: 0};
-                lab.l = HueScale.change(i, 0, ITERATIONS - 1, 0, 100);
+                lab.l = HueTools.reScale(i, 0, ITERATIONS - 1, 0, 100);
                 xyz = Hue.convertLABToXYZ(lab);
                 rgb = Hue.convertXYZToRGB(xyz);
                 assertEqualsFloat(rgb.r, rgb.g, TOLERANCE);
@@ -115,7 +115,7 @@ package tests
         
             for(i = 0; i < ITERATIONS; i++)
             {
-                hsl.h = changeScale(Math.random(), 0, 1, 0, 360);
+                hsl.h = HueTools.reScale(Math.random(), 0, 1, 0, 360);
                 hsl.s = Math.random();
                 hsl.l = Math.random();
                 rgb = Hue.convertHSLToRGB(hsl);
@@ -124,11 +124,6 @@ package tests
                 assertEqualsFloat(hsl.s, chsl.s, TOLERANCE);
                 assertEqualsFloat(hsl.l, chsl.l, TOLERANCE);
             }
-        }
-    
-        public static function changeScale(x:Number, a1:Number, b1:Number, a2:Number = 0, b2:Number = 1):Number
-        {
-            return (x * (a2 - b2) + a1 * b2 - a2 * b1) / (a1 - b1);
         }
     }
 }
