@@ -92,7 +92,6 @@ package library.hue
     {
       switch(component)
       {
-        default:
         case HueComponent.HSL_HUE:
           return components.hsl.h;
         case HueComponent.HSL_LIGHTNESS:
@@ -172,7 +171,6 @@ package library.hue
     {
       switch(group)
       {
-        default:
         case HueComponent.HSL:
           return components.hsl;
         case HueComponent.RGB:

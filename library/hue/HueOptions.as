@@ -66,8 +66,6 @@ package library.hue
         case HueComponent.LAB_B:
         case HueComponent.LAB:
           return labScale;
-        default:
-          return HueScale.REAL;
       }
     }
     
@@ -107,8 +105,6 @@ package library.hue
         case HueComponent.LAB:
           labScale = scale;
         break;
-        default:
-          return;
       }
       currentHue.notifyScaleChange();
     }

@@ -29,7 +29,6 @@ package library.hue
   	{
   		switch(precision)
   		{
-  			default:
   			case BPP8:
   			  return '256';
   			case BPP5:
@@ -43,7 +42,6 @@ package library.hue
   	{
       switch(value)
       {
-        default:
         case getStringForPrecision(BPP8):
           return BPP8;
         case getStringForPrecision(BPP5):
@@ -72,7 +70,6 @@ package library.hue
   	{
   		switch(group)
   		{
-  			default:
   			case HueComponent.RGB:
     			var rgb:Object = {};
           rgb.r = change(precision, values.r);

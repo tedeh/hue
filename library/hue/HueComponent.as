@@ -37,7 +37,6 @@ package library.hue
     {
       switch(component)
       {
-        default:
         case HueComponent.HSL_HUE:
         case HueComponent.HSL_LIGHTNESS:
         case HueComponent.HSL_SATURATION:
@@ -61,7 +60,6 @@ package library.hue
     {
     	switch(component)
     	{
-    		default:
     		case HSL_HUE:
           return 'h';
         case HSL_SATURATION:

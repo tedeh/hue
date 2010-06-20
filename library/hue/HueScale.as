@@ -25,7 +25,6 @@ package library.hue
   	{
   		switch(str)
   		{
-  			default:
   			case getStringForScale(REAL):
   			  return REAL;
   			case getStringForScale(PERCENTAGE):
@@ -39,7 +38,6 @@ package library.hue
     {
       switch(scale)
       {
-      	default:
       	case REAL:
       	  return 'Real';
       	case PERCENTAGE:

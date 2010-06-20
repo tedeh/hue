@@ -22,7 +22,6 @@ package library.hue
   	{
   		switch(component)
   		{
-  			default:
   			case HueComponent.HSL_HUE:
   			  return hueLine;
   			case HueComponent.HSL_SATURATION:
@@ -49,7 +48,6 @@ package library.hue
   	{
   		switch(component)
       {
-        default:
         case HueComponent.HSL_HUE:
           return huePlane;
         case HueComponent.HSL_SATURATION:
@@ -76,7 +74,6 @@ package library.hue
   	{
   		switch(component)
       {
-        default:
         case HueComponent.HSL_HUE:
           return {x: HueComponent.HSL_LIGHTNESS, y: HueComponent.HSL_SATURATION};
         case HueComponent.HSL_SATURATION:
