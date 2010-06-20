@@ -236,143 +236,15 @@ package library.hue
             return rgb;
         }
     
-        // Performs a LAB to Hex conversion
-        public static function convertLABToHex(lab:Object, truncateInvisibleColors:Boolean = false):Number
-        {
-            var fx:Number, 
-                fy:Number, 
-                fz:Number, 
-                xr:Number, 
-                yr:Number, 
-                zr:Number, 
-                r:Number, 
-                g:Number, 
-                b:Number, 
-                rgb:Object = {r: 0, g: 0, b: 0}, 
-                xyz:Object = {x: 0, y: 0, z: 0};
-        
-            fy = (lab.l + 16) / 116;
-            fz = fy - (lab.b / 200);
-            fx = lab.a / 500 + fy;
-        
-            xr = Math.pow(fx, 3) <= E ? (116 * fx - 16) / K : Math.pow(fx, 3);
-            yr = lab.l > K * E ? Math.pow((lab.l + 16) / 116, 3) : lab.l / K;
-            zr = Math.pow(fz, 3) <= E ? (116 * fz - 16) / K : Math.pow(fz, 3);
-        
-            xyz.x = xr * XW;
-            xyz.y = yr * YW;
-            xyz.z = zr * ZW;
-        
-            r = xyz.x * 3.2404542 + xyz.y * -1.5371385 + xyz.z * -0.4985314;
-            g = xyz.x * -0.9692660 + xyz.y * 1.8760108 + xyz.z * 0.0415560;
-            b = xyz.x * 0.0556434 + xyz.y * -0.2040259 + xyz.z * 1.0572252;
-        
-            rgb.r = r <= 0.0031308 ? 12.92 * r : 1.055 * Math.pow(r, 1 / 2.4) - 0.055;
-            rgb.g = g <= 0.0031308 ? 12.92 * g : 1.055 * Math.pow(g, 1 / 2.4) - 0.055;
-            rgb.b = b <= 0.0031308 ? 12.92 * b : 1.055 * Math.pow(b, 1 / 2.4) - 0.055;
-        
-            if(truncateInvisibleColors)
-            {
-                rgb.r = (rgb.r <= 0) ? 0 : (rgb.r >= 1 ? 1 : Math.round(rgb.r * 255) / 255);
-                rgb.g = (rgb.g <= 0) ? 0 : (rgb.g >= 1 ? 1 : Math.round(rgb.g * 255) / 255);
-                rgb.b = (rgb.b <= 0) ? 0 : (rgb.b >= 1 ? 1 : Math.round(rgb.b * 255) / 255);
-            }
-        
-            return rgb.r * 255 << 16 ^ rgb.g * 255 << 8 ^ rgb.b * 255;
-        }
-    
-        // Performs a XYZ to Hex conversion
-        public static function convertXYZToHex(xyz:Object, truncateInvisibleColors:Boolean = false):Number
-        {
-            var r:Number, 
-                g:Number, 
-                b:Number, 
-                rgb:Object = {r: 0, g: 0, b: 0};
-        
-            r = xyz.x * 3.2404542 + xyz.y * -1.5371385 + xyz.z * -0.4985314;
-            g = xyz.x * -0.9692660 + xyz.y * 1.8760108 + xyz.z * 0.0415560;
-            b = xyz.x * 0.0556434 + xyz.y * -0.2040259 + xyz.z * 1.0572252;
-        
-            rgb.r = r <= 0.0031308 ? 12.92 * r : 1.055 * Math.pow(r, 1 / 2.4) - 0.055;
-            rgb.g = g <= 0.0031308 ? 12.92 * g : 1.055 * Math.pow(g, 1 / 2.4) - 0.055;
-            rgb.b = b <= 0.0031308 ? 12.92 * b : 1.055 * Math.pow(b, 1 / 2.4) - 0.055;
-        
-            if(truncateInvisibleColors)
-            {
-                rgb.r = (rgb.r <= 0) ? 0 : (rgb.r >= 1 ? 1 : Math.round(rgb.r * 255) / 255);
-                rgb.g = (rgb.g <= 0) ? 0 : (rgb.g >= 1 ? 1 : Math.round(rgb.g * 255) / 255);
-                rgb.b = (rgb.b <= 0) ? 0 : (rgb.b >= 1 ? 1 : Math.round(rgb.b * 255) / 255);
-            }
-        
-            return rgb.r * 255 << 16 ^ rgb.g * 255 << 8 ^ rgb.b * 255;
-        }
-    
-        // Performs a HSL to Hex conversion
-        public static function convertHSLToHex(hsl:Object, roundColors:Boolean = false):Number
-        {
-            var rgb:Object = {r: 0, g: 0, b: 0},
-                q:Number, 
-                p:Number, 
-                h:Number;
-        
-            if(hsl.s === 0)
-            {
-                rgb.r = hsl.l;
-                rgb.g = hsl.l;
-                rgb.b = hsl.l;
-            }
-            else
-            {
-                q = hsl.l < 1 / 2 ? hsl.l * (1 + hsl.s) : hsl.s + hsl.l * (1 - hsl.s);
-                p = 2 * hsl.l - q;
-                rgb.r = hueToRGBHelper(p, q, (hsl.h + 120) / 360);
-                rgb.g = hueToRGBHelper(p, q, hsl.h / 360);
-                rgb.b = hueToRGBHelper(p, q, (hsl.h - 120) / 360);
-            }
-        
-            if(roundColors)
-            {
-                rgb.r = Math.round(rgb.r * 255) / 255;
-                rgb.g = Math.round(rgb.g * 255) / 255;
-                rgb.b = Math.round(rgb.b * 255) / 255;
-            }
-        
-            return rgb.r * 255 << 16 ^ rgb.g * 255 << 8 ^ rgb.b * 255;
-        }
-    
         // Converts XYZ to RGB
         public static function convertXYZToRGB(xyz:Object, truncateInvisibleColors:Boolean = false):Object
         {
             var rgb:Object = {r: 0, g: 0, b: 0};
             var r:Number, g:Number, b:Number;
-            var sRGB:Array = 
-                [
-                 [3.2404542, -1.5371385, -0.4985314],
-                 [-0.9692660, 1.8760108, 0.0415560],
-                 [0.0556434, -0.2040259, 1.0572252]
-                  ];
-            var transformation:DynamicMatrix = new DynamicMatrix(3, 3);
-        
-            var value:Number;
-            for(var row:int = 0;row < sRGB.length; row++)
-            {
-                for(var col:int = 0;col < sRGB[row].length; col++)
-                {
-                    value = sRGB[row][col];
-                    transformation.SetValue(row, col, value);
-                }
-            }
-        
-            var XYZ:DynamicMatrix = new DynamicMatrix(1, 3);
-            XYZ.SetValue(0, 0, xyz.x);
-            XYZ.SetValue(1, 0, xyz.y);
-            XYZ.SetValue(2, 0, xyz.z);
-        
-            transformation.Multiply(XYZ, DynamicMatrix.MATRIX_ORDER_APPEND);
-        
-            r = transformation.GetValue(0, 0);
-            g = transformation.GetValue(1, 0);
-            b = transformation.GetValue(2, 0);
+            
+            r = xyz.x * 3.2404542 + xyz.y * -1.5371385 + xyz.z * -0.4985314;
+            g = xyz.x * -0.9692660 + xyz.y * 1.8760108 + xyz.z * 0.0415560;
+            b = xyz.x * 0.0556434 + xyz.y * -0.2040259 + xyz.z * 1.0572252;
         
             rgb.r = r <= 0.0031308 ? 12.92 * r : 1.055 * Math.pow(r, 1 / 2.4) - 0.055;
             rgb.g = g <= 0.0031308 ? 12.92 * g : 1.055 * Math.pow(g, 1 / 2.4) - 0.055;
@@ -519,39 +391,26 @@ package library.hue
         {
             var xyz:Object = {x: 0, y: 0, z: 0};
             var r:Number, g:Number, b:Number;
-            var sRGB:Array = [
-                 [0.4124564, 0.3575761, 0.1804375],
-                 [0.2126729, 0.7151522, 0.0721750],
-                 [0.0193339, 0.1191920, 0.9503041]
-            ];
-            var transformation:DynamicMatrix = new DynamicMatrix(3, 3);
-        
-            var value:Number;
-            for(var row:int = 0;row < sRGB.length; row++)
-            {
-                for(var col:int = 0;col < sRGB[row].length; col++)
-                {
-                    value = sRGB[row][col];
-                    transformation.SetValue(row, col, value);
-                }
-            }
         
             r = rgb.r <= 0.04045 ? rgb.r / 12.92 : Math.pow(((rgb.r + 0.055) / 1.055), 2.4);
             g = rgb.g <= 0.04045 ? rgb.g / 12.92 : Math.pow(((rgb.g + 0.055) / 1.055), 2.4);
             b = rgb.b <= 0.04045 ? rgb.b / 12.92 : Math.pow(((rgb.b + 0.055) / 1.055), 2.4);
-        
-            var RGB:DynamicMatrix = new DynamicMatrix(1, 3);
-            RGB.SetValue(0, 0, r);
-            RGB.SetValue(1, 0, g);
-            RGB.SetValue(2, 0, b);
-        
-            transformation.Multiply(RGB, DynamicMatrix.MATRIX_ORDER_APPEND);
-        
-            xyz.x = transformation.GetValue(0, 0);
-            xyz.y = transformation.GetValue(1, 0);
-            xyz.z = transformation.GetValue(2, 0);
+            
+            xyz.x = r * 0.4124564 + g * 0.3575761 + b * 0.1804375
+            xyz.y = r * 0.2126729 + g * 0.7151522 + b * 0.0721750
+            xyz.z = r * 0.0193339 + g * 0.1191920 + b * 0.9503041
         
             return xyz;
+        }
+        
+        public static function convertHSLToHex(hsl:Object, roundColors:Boolean = true):Number
+        {
+            return convertRGBToHex(convertHSLToRGB(hsl, roundColors));
+        }
+        
+        public static function convertLABToHex(lab:Object, truncateInvisibleColors:Boolean = true):Number
+        {
+            return convertRGBToHex(convertXYZToRGB(convertLABToXYZ(lab), truncateInvisibleColors));
         }
     }
 }

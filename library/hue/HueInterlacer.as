@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Scaled spectrum drawing for computationally intensive color space transformations
  */
 package library.hue

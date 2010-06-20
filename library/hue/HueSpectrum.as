@@ -1,4 +1,4 @@
-/*
+﻿/*
  * A collection of methods for drawing a spectrum on a Sprite
  */
 package library.hue
@@ -7,7 +7,7 @@ package library.hue
     import flash.display.Graphics;
     import flash.display.Sprite;
     import flash.geom.Matrix;  
-
+    
     public final class HueSpectrum 
     {
         // Returns the line function for the specified component
@@ -150,12 +150,12 @@ package library.hue
             for(stepX = 0; stepX < precision; stepX++)
             {
                 x = Math.floor(xFactor * stepX);
-                lab[xProperty] = HueScale.change(stepX, 0, precision - 1, xRange.min, xRange.max);
+                lab[xProperty] = HueTools.reScale(stepX, 0, precision - 1, xRange.min, xRange.max);
     
                 for(stepY = 0; stepY < precision; stepY++)
                 {
                     y = Math.floor(yFactor * stepY);
-                    lab[yProperty] = HueScale.change(stepY, 0, precision - 1, yRange.max, yRange.min);
+                    lab[yProperty] = HueTools.reScale(stepY, 0, precision - 1, yRange.max, yRange.min);
     
                     hex = Hue.convertLABToHex(lab, true);
     
@@ -184,7 +184,7 @@ package library.hue
             {
                 for(x = 0; x < precision; x++)
                 {
-                    lab[property] = HueScale.change(x, 0, precision - 1, range.min, range.max);
+                    lab[property] = HueTools.reScale(x, 0, precision - 1, range.min, range.max);
                     lab = HuePrecision.changeGroup(HueComponent.LAB, lab, precision);
                     hex = Hue.convertLABToHex(lab, true);
     
@@ -203,7 +203,7 @@ package library.hue
                 for(step = 0; step < precision; step++)
                 {
                     x = Math.floor((stepWidth) * step);
-                    lab[property] = HueScale.change(step, 0, precision - 1, range.min, range.max);
+                    lab[property] = HueTools.reScale(step, 0, precision - 1, range.min, range.max);
                     hex = Hue.convertLABToHex(lab, true);
         
                     g.beginFill(hex);
@@ -249,13 +249,13 @@ package library.hue
                     hexTo:Number;
         
                 rgbFrom = color.getGroupCopy(HueComponent.RGB);
-                rgbTo = Hue.copyObject(rgbFrom);
+                rgbTo = HueTools.copyObject(rgbFrom);
         
                 m.createGradientBox(width, height, Math.PI / 2);
         
                 for(i = 0; i < width; i++)
                 {
-                    rgbFrom[propertyX] = HueScale.change(i, 0, width - 1, rgbRange.min, rgbRange.max);
+                    rgbFrom[propertyX] = HueTools.reScale(i, 0, width - 1, rgbRange.min, rgbRange.max);
                     rgbFrom[propertyY] = rgbRange.max;
         
                     rgbTo[propertyX] = rgbFrom[propertyX];
@@ -283,12 +283,12 @@ package library.hue
                 for(stepX = 0; stepX < precision; stepX++)
                 {
                     x = Math.floor(xFactor * stepX);
-                    rgb[propertyX] = HueScale.change(stepX, 0, precision - 1, rgbRange.min, rgbRange.max);
+                    rgb[propertyX] = HueTools.reScale(stepX, 0, precision - 1, rgbRange.min, rgbRange.max);
         
                     for(stepY = 0; stepY < precision; stepY++)
                     {
                         y = Math.floor(yFactor * stepY);
-                        rgb[propertyY] = HueScale.change(stepY, 0, precision - 1, rgbRange.max, rgbRange.min);
+                        rgb[propertyY] = HueTools.reScale(stepY, 0, precision - 1, rgbRange.max, rgbRange.min);
         
                         hex = Hue.convertRGBToHex(rgb);
                         g.beginFill(hex);
@@ -358,7 +358,7 @@ package library.hue
                 for(step = 0; step < precision; step += stepSize)
                 {
                     x = Math.floor((stepScale) * step);
-                    rgb[property] = HueScale.change(step, 0, precision - 1, rgbRange.min, rgbRange.max);
+                    rgb[property] = HueTools.reScale(step, 0, precision - 1, rgbRange.min, rgbRange.max);
                     hex = Hue.convertRGBToHex(rgb);
                     g.beginFill(hex);
                     g.drawRect(x, 0, Math.ceil(stepScale), height);
@@ -406,7 +406,7 @@ package library.hue
                     hexTo:Number;
     
                 hslFrom = hsl;
-                hslTo = Hue.copyObject(hslFrom);
+                hslTo = HueTools.copyObject(hslFrom);
         
                 m.createGradientBox(width, height, Math.PI / 2);
         
@@ -415,9 +415,9 @@ package library.hue
         
                 for(x = 0; x < width; x++)
                 {
-                    hslFrom[xProperty] = HueScale.change(x, 0, width - 1, xRange.min, xRange.max);
+                    hslFrom[xProperty] = HueTools.reScale(x, 0, width - 1, xRange.min, xRange.max);
                     hslTo[xProperty] = hslFrom[xProperty];
-        
+					
                     hexFrom = Hue.convertHSLToHex(hslFrom, true);
                     hexTo = Hue.convertHSLToHex(hslTo, true);
         
@@ -436,12 +436,12 @@ package library.hue
     
                 for(stepX = 0; stepX < precision; stepX++)
                 {
-                    hsl[xProperty] = HueScale.change(stepX, 0, precision - 1, xRange.min, xRange.max);
+                    hsl[xProperty] = HueTools.reScale(stepX, 0, precision - 1, xRange.min, xRange.max);
                     x = Math.floor(xFactor * stepX);
         
                     for(stepY = 0; stepY < precision; stepY++)
                     {
-                        hsl[yProperty] = HueScale.change(stepY, 0, precision - 1, yRange.max, yRange.min);
+                        hsl[yProperty] = HueTools.reScale(stepY, 0, precision - 1, yRange.max, yRange.min);
                         y = Math.floor(yFactor * stepY);
         
                         hsl = HuePrecision.changeGroup(HueComponent.HSL, hsl, precision);
@@ -477,8 +477,8 @@ package library.hue
                     hexTo:Number;
         
                 hslFrom = hsl;
-                hslMiddle = Hue.copyObject(hslFrom);
-                hslTo = Hue.copyObject(hslFrom);
+                hslMiddle = HueTools.copyObject(hslFrom);
+                hslTo = HueTools.copyObject(hslFrom);
         
                 m.createGradientBox(width, height, Math.PI / 2);
         
@@ -488,7 +488,7 @@ package library.hue
         
                 for(i = 0; i < width; i++)
                 {
-                    hslFrom.h = HueScale.change(i, 0, width - 1, hRange.min, hRange.max);
+                    hslFrom.h = HueTools.reScale(i, 0, width - 1, hRange.min, hRange.max);
                     hslTo.h = hslMiddle.h = hslFrom.h;
         
                     hexFrom = Hue.convertHSLToHex(hslFrom, true);
@@ -549,7 +549,7 @@ package library.hue
         
                 for(step = 0; step < steps; step++)
                 {
-                    hsl[property] = HueScale.change(step, 0, steps - 1, range.min, range.max);
+                    hsl[property] = HueTools.reScale(step, 0, steps - 1, range.min, range.max);
                     hsl = HuePrecision.changeGroup(HueComponent.HSL, hsl, precision);
                     hex = Hue.convertHSLToHex(hsl, true);
         
@@ -575,7 +575,7 @@ package library.hue
         
                 for(i = 0; i < width; i++)
                 {
-                    hsl.h = HueScale.change(i, 0, width - 1, hRange.min, hRange.max);
+                    hsl.h = HueTools.reScale(i, 0, width - 1, hRange.min, hRange.max);
                     hsl = HuePrecision.changeGroup(HueComponent.HSL, hsl, precision);
                     hex = Hue.convertHSLToHex(hsl, true);
                     g.beginFill(hex);
