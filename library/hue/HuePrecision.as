@@ -1,12 +1,5 @@
 /*
- * HuePrecision
- * A collection of methods for manipulating the precision of a color group
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
+ * A collection of methods for manipulating the bit precision of a color group
  */
 package library.hue
 {

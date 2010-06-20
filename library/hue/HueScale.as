@@ -1,12 +1,5 @@
 /*
- * HueScale
  * A collection of methods for converting color values between different scales
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
  */
 package library.hue
 {

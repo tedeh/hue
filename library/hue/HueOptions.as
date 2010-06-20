@@ -1,13 +1,6 @@
 /*
- * HueOptions
  * Holds options that belong to a defined Hue object
  * Provides a interface for changing global scale and precision objects
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
  */
 package library.hue
 {

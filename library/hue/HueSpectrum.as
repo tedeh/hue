@@ -1,12 +1,5 @@
 /*
- * HueSpectrum
  * A collection of methods for drawing a spectrum on a Sprite
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
  */
 package library.hue
 {

@@ -1,12 +1,5 @@
 /*
- * Hue
- * Represents a color, and gives a common interface for the manipulation of it
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
+ * Represents a color, and presents an interface for the manipulation of it
  */
 package library.hue
 {

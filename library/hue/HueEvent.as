@@ -1,12 +1,5 @@
 /*
- * HueEvent
- * Events dispatched by Hue
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
+ * Event class used by Hue
  */
 package library.hue
 {

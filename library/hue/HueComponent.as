@@ -1,12 +1,5 @@
 /*
- * HueComponent
  * Represents a color component or a color group
- * 
- * License:
- * http://creativecommons.org/licenses/by-sa/3.0/
- * 
- * Created by Tedde Lundgren
- * 
  */
 package library.hue
 {
