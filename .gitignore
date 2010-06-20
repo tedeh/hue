@@ -2,3 +2,7 @@ externals/*
 *.fla
 *.swf
 *.as
+.buildpath
+.project
+.settings/
+
