@@ -1,10 +1,10 @@
 package tests {
-	import asunit.textui.TestRunner;
-	
-	public class HueTestRunner extends TestRunner {
+    import asunit.textui.TestRunner;
 
-		public function HueTestRunner() {
-      start(HueTests, null, TestRunner.SHOW_TRACE);
-		}
-	}
+    public class HueTestRunner extends TestRunner {
+
+        public function HueTestRunner() {
+            start(HueTests, null, TestRunner.SHOW_TRACE);
+        }
+    }
 }
