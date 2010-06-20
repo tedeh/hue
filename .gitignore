@@ -1,8 +1,6 @@
 externals/*
-*.fla
+!externals/asunit
 *.swf
-*.as
 .buildpath
 .project
 .settings/
-

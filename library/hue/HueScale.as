@@ -25,6 +25,7 @@ package library.hue
         {
             switch(str)
             {
+                default:
                 case getStringForScale(REAL):
                     return REAL;
                 case getStringForScale(PERCENTAGE):
@@ -38,6 +39,7 @@ package library.hue
         {
             switch(scale)
             {
+                default:
                 case REAL:
                     return 'Real';
                 case PERCENTAGE:
@@ -57,60 +59,60 @@ package library.hue
         {
             var obj:Object = {max: 0, min: 0};
 
-        switch(true)
-        {
-            case component == HueComponent.LAB_L:
-            case scale == HueScale.NORMALIZED && component == HueComponent.HSL_LIGHTNESS:
-            case scale == HueScale.NORMALIZED && component == HueComponent.HSL_SATURATION:
-            case scale == PERCENTAGE:
-                obj.max = 100;
-                obj.min = 0;
-            break;
+            switch(true)
+            {
+                case component == HueComponent.LAB_L:
+                case scale == HueScale.NORMALIZED && component == HueComponent.HSL_LIGHTNESS:
+                case scale == HueScale.NORMALIZED && component == HueComponent.HSL_SATURATION:
+                case scale == PERCENTAGE:
+                    obj.max = 100;
+                    obj.min = 0;
+                break;
+        
+                case component == HueComponent.LAB_A:
+                case component == HueComponent.LAB_B:
+                    obj.max = 127;
+                    obj.min = -128;
+                break;
+        
+                case component == HueComponent.HSL_HUE:
+                    obj.max = 360;
+                    obj.min = 0;
+                break;
+        
+                case scale == HueScale.NORMALIZED && component == HueComponent.RGB:
+                case scale == HueScale.NORMALIZED && component == HueComponent.RGB_RED:
+                case scale == HueScale.NORMALIZED && component == HueComponent.RGB_GREEN:
+                case scale == HueScale.NORMALIZED && component == HueComponent.RGB_BLUE:
+                    obj.max = 255;
+                    obj.min = 0;
+                break;
+        
+                case component == HueComponent.XYZ_X:
+                    obj.max = Hue.XW;
+                    obj.min = 0;
+                break;
+                case component == HueComponent.XYZ_Y:
+                    obj.max = Hue.YW;
+                    obj.min = 0;
+                break;
+                case component == HueComponent.XYZ_Z:
+                    obj.max = Hue.ZW;
+                    obj.min = 0;
+                break;
+        
+                case scale == HueScale.REAL && component == HueComponent.HSL_LIGHTNESS:
+                case scale == HueScale.REAL && component == HueComponent.HSL_SATURATION:
+                case scale == HueScale.REAL && component == HueComponent.RGB:
+                case scale == HueScale.REAL && component == HueComponent.RGB_RED:
+                case scale == HueScale.REAL && component == HueComponent.RGB_GREEN:
+                case scale == HueScale.REAL && component == HueComponent.RGB_BLUE:
+                    obj.max = 1;
+                    obj.min = 0;
+                break;
+            }
     
-            case component == HueComponent.LAB_A:
-            case component == HueComponent.LAB_B:
-                obj.max = 127;
-                obj.min = -128;
-            break;
-    
-            case component == HueComponent.HSL_HUE:
-                obj.max = 360;
-                obj.min = 0;
-            break;
-    
-            case scale == HueScale.NORMALIZED && component == HueComponent.RGB:
-            case scale == HueScale.NORMALIZED && component == HueComponent.RGB_RED:
-            case scale == HueScale.NORMALIZED && component == HueComponent.RGB_GREEN:
-            case scale == HueScale.NORMALIZED && component == HueComponent.RGB_BLUE:
-                obj.max = 255;
-                obj.min = 0;
-            break;
-    
-            case component == HueComponent.XYZ_X:
-                obj.max = Hue.XW;
-                obj.min = 0;
-            break;
-            case component == HueComponent.XYZ_Y:
-                obj.max = Hue.YW;
-                obj.min = 0;
-            break;
-            case component == HueComponent.XYZ_Z:
-                obj.max = Hue.ZW;
-                obj.min = 0;
-            break;
-    
-            case scale == HueScale.REAL && component == HueComponent.HSL_LIGHTNESS:
-            case scale == HueScale.REAL && component == HueComponent.HSL_SATURATION:
-            case scale == HueScale.REAL && component == HueComponent.RGB:
-            case scale == HueScale.REAL && component == HueComponent.RGB_RED:
-            case scale == HueScale.REAL && component == HueComponent.RGB_GREEN:
-            case scale == HueScale.REAL && component == HueComponent.RGB_BLUE:
-                obj.max = 1;
-                obj.min = 0;
-            break;
-        }
-
-        return obj;
+            return obj;
         }
 
         public static function scaleIsInteger(scale:String):Boolean

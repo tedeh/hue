@@ -117,6 +117,7 @@ package library.hue
                 case HueComponent.XYZ_Z:
                     return components.xyz.z;
             }
+            return 0;
         }
     
         // Sets a component to a value
@@ -128,40 +129,40 @@ package library.hue
             {
                 case HueComponent.HSL_HUE:
                     group.h = value;
-                    break;
+                break;
                 case HueComponent.HSL_LIGHTNESS:
                     group.l = value;
-                    break;
+                break;
                 case HueComponent.HSL_SATURATION:
                     group.s = value;
-                    break;
+                break;
                 case HueComponent.RGB_RED:
                     group.r = value;
-                    break;
+                break;
                 case HueComponent.RGB_GREEN:
                     group.g = value;
-                    break;
+                break;
                 case HueComponent.RGB_BLUE:
                     group.b = value;
-                    break;
+                break;
                 case HueComponent.LAB_L:
                     group.l = value;
-                    break;
+                break;
                 case HueComponent.LAB_A:
                     group.a = value;
-                    break;
+                break;
                 case HueComponent.LAB_B:
                     group.b = value;
-                    break;
+                break;
                 case HueComponent.XYZ_X:
                     group.x = value;
-                    break;
+                break;
                 case HueComponent.XYZ_Y:
                     group.y = value;
-                    break;
+                break;
                 case HueComponent.XYZ_Z:
                     group.z = value;
-                    break;  
+                break;  
             }
             setGroup(groupName, group, silent);
         }
@@ -180,6 +181,7 @@ package library.hue
                 case HueComponent.XYZ:
                     return components.xyz;
             }
+            return {};
         }
     
         // Copies passed object

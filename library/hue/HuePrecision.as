@@ -29,6 +29,7 @@ package library.hue
         {
             switch(precision)
             {
+                default:
                 case BPP8:
                     return '256';
                 case BPP5:
@@ -49,6 +50,7 @@ package library.hue
                 case getStringForPrecision(BPP4):
                     return BPP4;
             }
+            return 0;
         }
 
         // Changes the precision of value
@@ -95,6 +97,7 @@ package library.hue
                     hsl.l = change(precision, values.l);
                     return hsl;
             }
+            return {};
         }
 
         // Changes the precision of an RGB object

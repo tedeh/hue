@@ -41,6 +41,7 @@ package library.hue
                 case HueComponent.LAB_B:
                     return labbLine;
             }
+            return function() {};
         }
 
         // Returns the plane function for the specified component
@@ -67,6 +68,7 @@ package library.hue
                 case HueComponent.LAB_B:
                     return labbPlane;
             }
+            return function() {};
         }
 
         // Returns the components (and their axis) used for the spectrum plane methods
@@ -93,6 +95,7 @@ package library.hue
                 case HueComponent.LAB_B:
                     return {x: HueComponent.LAB_A, y: HueComponent.LAB_L};
             }
+            return {};
         }
 
         // Draws a LAB plane with B as Y and A as X

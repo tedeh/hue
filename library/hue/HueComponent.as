@@ -37,6 +37,7 @@ package library.hue
         {
             switch(component)
             {
+                default:
                 case HueComponent.HSL_HUE:
                 case HueComponent.HSL_LIGHTNESS:
                 case HueComponent.HSL_SATURATION:
@@ -60,33 +61,34 @@ package library.hue
         {
             switch(component)
             {
-            case HSL_HUE:
-                return 'h';
-            case HSL_SATURATION:
-                return 's';
-            case HSL_LIGHTNESS:
-                return 'l';
-
-            case RGB_RED:
-                return 'r';
-            case RGB_GREEN:
-                return 'g';
-            case RGB_BLUE:
-                return 'b';
-
-            case XYZ_X:
-                return 'x';
-            case XYZ_Y:
-                return 'y';
-            case XYZ_Z:
-                return 'z';
-
-            case LAB_L:
-                return 'l';
-            case LAB_A:
-                return 'a';
-            case LAB_B:
-                return 'b';
+                default:
+                case HSL_HUE:
+                    return 'h';
+                case HSL_SATURATION:
+                    return 's';
+                case HSL_LIGHTNESS:
+                    return 'l';
+    
+                case RGB_RED:
+                    return 'r';
+                case RGB_GREEN:
+                    return 'g';
+                case RGB_BLUE:
+                    return 'b';
+    
+                case XYZ_X:
+                    return 'x';
+                case XYZ_Y:
+                    return 'y';
+                case XYZ_Z:
+                    return 'z';
+    
+                case LAB_L:
+                    return 'l';
+                case LAB_A:
+                    return 'a';
+                case LAB_B:
+                    return 'b';
             }
         }
     }

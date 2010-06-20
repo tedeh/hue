@@ -46,6 +46,7 @@ package library.hue
         {
             switch(identifier)
             {
+                default:
                 case HueComponent.RGB_RED:
                 case HueComponent.RGB_GREEN:
                 case HueComponent.RGB_BLUE:
@@ -81,6 +82,7 @@ package library.hue
         {
             switch(identifier)
             {
+                default:
                 case HueComponent.RGB_RED:
                 case HueComponent.RGB_GREEN:
                 case HueComponent.RGB_BLUE:

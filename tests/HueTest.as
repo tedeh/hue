@@ -23,7 +23,7 @@ package tests
             this.instance = null;
         }
     
-        public function testLABConsistance():void
+        public function testLABConsistence():void
         {
             const ITERATIONS:uint = 2000, TOLERANCE:Number = 1 / 100000;
         
