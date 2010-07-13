@@ -11,8 +11,6 @@
       addTest(new HueTest('testConversionXYZLAB'));
       addTest(new HueTest('testConversionRGBHSL'));
       addTest(new HueTest('testLABConsistance'));
-      
-      
     }
   }
 }
