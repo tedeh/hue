@@ -7,7 +7,6 @@ package tests
     public function HueTestRunner() 
     {
       start(HueTests, null, TestRunner.SHOW_TRACE);
-      start(HueComponentTests, null, TestRunner.SHOW_TRACE);
     }
   }
 }

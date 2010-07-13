@@ -10,7 +10,9 @@
       addTest(new HueTest('testConversionRGBXYZ'));
       addTest(new HueTest('testConversionXYZLAB'));
       addTest(new HueTest('testConversionRGBHSL'));
-      addTest(new HueTest('testLABConsistance'));
+      addTest(new HueTest('testLABConsistence'));
+      addTest(new HueComponentTest('testMethodExceptions'));
+      addTest(new HueComponentTest('testGroupComponentMethod'));
     }
   }
 }
